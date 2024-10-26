@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4bi72peu0ql5"]
+
+[ext_resource type="Script" path="res://Assets/Enemies/HealthBar/health_bar_enemy.gd" id="1_r4yeg"]
+[ext_resource type="Texture2D" uid="uid://bxysyksscg1ex" path="res://Assets/Enemies/HealthBar/Sprites/progress.png" id="2_a3aqp"]
+[ext_resource type="Texture2D" uid="uid://ciplthwcflcej" path="res://Assets/Enemies/HealthBar/Sprites/over.png" id="3_sys6a"]
+
+[node name="HealthBarEnemy" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r4yeg")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+value = 5.0
+texture_under = ExtResource("2_a3aqp")
+texture_over = ExtResource("3_sys6a")
+texture_progress = ExtResource("2_a3aqp")
+tint_under = Color(0, 0.415686, 0.478431, 1)
+tint_progress = Color(0.286275, 1, 0, 1)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4cp28dgo1bf7"]
+
+[ext_resource type="Script" path="res://Assets/Sfx/button/button_click_sound.gd" id="1_0bkj7"]
+[ext_resource type="AudioStream" uid="uid://bxa06a0ryldtf" path="res://Assets/Sfx/button/sound/SFX_UI_Beep_01.ogg" id="2_rs0s8"]
+
+[node name="ButtonClickSound" type="Node"]
+script = ExtResource("1_0bkj7")
+
+[node name="Click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_rs0s8")
+bus = &"Sfx"

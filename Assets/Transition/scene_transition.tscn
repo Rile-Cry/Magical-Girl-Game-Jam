@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://cd5yv5vpcptci"]
+
+[ext_resource type="Script" path="res://Assets/Transition/scene_transition.gd" id="1_xjun3"]
+
+[sub_resource type="Animation" id="Animation_sjapg"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2cx2i"]
+resource_name = "dissolve"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bmqgs"]
+_data = {
+"RESET": SubResource("Animation_sjapg"),
+"dissolve": SubResource("Animation_2cx2i")
+}
+
+[node name="SceneTransition" type="CanvasLayer"]
+script = ExtResource("1_xjun3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.333333, 0.270588, 0.705882, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bmqgs")
+}

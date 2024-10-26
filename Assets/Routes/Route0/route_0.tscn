@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbqj62rlf48gb"]
+
+[ext_resource type="PackedScene" uid="uid://d1g10xtomv64c" path="res://Assets/Enemies/Golem/golem.tscn" id="1_bnqxj"]
+
+[sub_resource type="Curve2D" id="Curve2D_niy06"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 25, 1034, 0, 0, 0, 0, 133, 1034, 0, 0, 0, 0, 274, 1024, 0, 0, 0, 0, 342, 984, 0, 0, 0, 0, 418, 891, 0, 0, 0, 0, 458, 797, 0, 0, 0, 0, 494, 686, 0, 0, 0, 0, 521, 583, 0, 0, 0, 0, 539, 452, 0, 0, 0, 0, 562, 339, 0, 0, 0, 0, 612, 230, 0, 0, 0, 0, 693, 172, 0, 0, 0, 0, 839, 152, 0, 0, 0, 0, 929, 190, 0, 0, 0, 0, 1010, 286, 0, 0, 0, 0, 1071, 424, 0, 0, 0, 0, 1129, 581, 0, 0, 0, 0, 1164, 719, 0, 0, 0, 0, 1202, 815, 0, 0, 0, 0, 1252, 903, 0, 0, 0, 0, 1335, 941, 0, 0, 0, 0, 1491, 966, 0, 0, 0, 0, 1640, 948, 0, 0, 0, 0, 1748, 873, 0, 0, 0, 0, 1786, 757, 0, 0, 0, 0, 1799, 583, 0, 0, 0, 0, 1854, 475, 0, 0, 0, 0, 1910, 455)
+}
+point_count = 28
+
+[node name="Route0" type="Path2D"]
+curve = SubResource("Curve2D_niy06")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+position = Vector2(25, 1034)
+rotates = false
+loop = false
+
+[node name="Golem" parent="PathFollow2D" instance=ExtResource("1_bnqxj")]

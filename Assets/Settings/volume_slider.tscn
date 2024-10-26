@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=3 uid="uid://tay4rfqj4dm5"]
+
+[ext_resource type="Script" path="res://Assets/Settings/volume_slider.gd" id="1_irnel"]
+[ext_resource type="Texture2D" uid="uid://cw3sbitv5f428" path="res://Assets/Settings/img/notpressed.svg" id="1_t6byv"]
+[ext_resource type="Texture2D" uid="uid://c5gt8are1xq4a" path="res://Assets/Settings/img/pressed.svg" id="2_vouji"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aneus"]
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.54902, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fhog3"]
+content_margin_left = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(1, 0.184314, 0.756863, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mtox2"]
+bg_color = Color(1, 1, 0, 1)
+
+[node name="Volume_slider" type="HSlider"]
+offset_right = 8.0
+offset_bottom = 16.0
+theme_override_icons/grabber = ExtResource("1_t6byv")
+theme_override_icons/grabber_highlight = ExtResource("2_vouji")
+theme_override_styles/slider = SubResource("StyleBoxFlat_aneus")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_fhog3")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_mtox2")
+max_value = 1.0
+step = 0.001
+script = ExtResource("1_irnel")
+
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

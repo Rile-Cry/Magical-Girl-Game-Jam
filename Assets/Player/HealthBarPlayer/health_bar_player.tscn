@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://cpy0cm3owct2w"]
+
+[ext_resource type="Texture2D" uid="uid://byet44eo7itj4" path="res://Assets/Player/HealthBarPlayer/Sprites/progress_bar.png" id="1_4ul4f"]
+[ext_resource type="Script" path="res://Assets/Player/HealthBarPlayer/health_bar_player.gd" id="1_tlbst"]
+[ext_resource type="Texture2D" uid="uid://dj7mnuprntok5" path="res://Assets/Player/HealthBarPlayer/Sprites/over_bar.png" id="2_0qato"]
+[ext_resource type="Texture2D" uid="uid://c3jjco44uc7ld" path="res://Assets/Player/HealthBarPlayer/Sprites/r_spritesheet.png" id="4_esqxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02eaf"]
+atlas = ExtResource("4_esqxm")
+region = Rect2(0, 0, 819, 629)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wx7k0"]
+atlas = ExtResource("4_esqxm")
+region = Rect2(819, 0, 819, 629)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_we2r2"]
+atlas = ExtResource("4_esqxm")
+region = Rect2(1638, 0, 819, 629)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ky1q8"]
+atlas = ExtResource("4_esqxm")
+region = Rect2(2457, 0, 819, 629)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkxpw"]
+atlas = ExtResource("4_esqxm")
+region = Rect2(3276, 0, 819, 629)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj4po"]
+atlas = ExtResource("4_esqxm")
+region = Rect2(4095, 0, 819, 629)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2nj1u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_02eaf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wx7k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_we2r2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ky1q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkxpw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj4po")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="HealthBarPlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_tlbst")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Node2D"]
+offset_left = 50.0
+offset_top = -150.0
+offset_right = 867.0
+offset_bottom = 477.0
+value = 50.0
+texture_under = ExtResource("1_4ul4f")
+texture_over = ExtResource("2_0qato")
+texture_progress = ExtResource("1_4ul4f")
+tint_under = Color(0.329412, 0.160784, 0.360784, 1)
+tint_over = Color(0.117647, 0.0588235, 0.113725, 1)
+tint_progress = Color(0.27451, 0.498039, 0.631373, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+position = Vector2(459, 164)
+sprite_frames = SubResource("SpriteFrames_2nj1u")
+frame_progress = 0.271553

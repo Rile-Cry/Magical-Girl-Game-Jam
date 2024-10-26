@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://counabjtyqjph"]
+
+[ext_resource type="Script" path="res://Assets/Towers/BulletA/bullet_a.gd" id="1_6qrjl"]
+[ext_resource type="Texture2D" uid="uid://c4afke75l214m" path="res://Assets/Towers/Sprites/TowerA/impact_purple .png" id="2_4t0x2"]
+[ext_resource type="Texture2D" uid="uid://ch2i73ktgbgag" path="res://icon.svg" id="3_ff3h2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq5ks"]
+atlas = ExtResource("2_4t0x2")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6i2y"]
+atlas = ExtResource("2_4t0x2")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8l3d"]
+atlas = ExtResource("2_4t0x2")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rd2rn"]
+atlas = ExtResource("2_4t0x2")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d7ouu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq5ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6i2y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v8l3d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rd2rn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ttb8"]
+radius = 15.0
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ri2m3"]
+radius = 18.0
+height = 60.0
+
+[node name="BulletA" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_6qrjl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_d7ouu")
+frame = 1
+frame_progress = 0.142237
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+rotation = 1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("3_ff3h2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8ttb8")
+
+[node name="Area2D" type="Area2D" parent="."]
+rotation = 1.5708
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CapsuleShape2D_ri2m3")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

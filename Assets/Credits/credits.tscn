@@ -1,0 +1,113 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtukclwbtkrlc"]
+
+[ext_resource type="FontFile" uid="uid://dnmekgv5hr61t" path="res://Assets/Menu/Fonts/Kaph-Regular.ttf" id="1_0olyr"]
+[ext_resource type="Script" path="res://Assets/Credits/credits.gd" id="1_6hxa3"]
+[ext_resource type="Shader" path="res://Assets/Credits/creditsbg.gdshader" id="2_dqfp7"]
+[ext_resource type="PackedScene" uid="uid://c1aov5f8wuldy" path="res://Assets/Sfx/button/sound_button.tscn" id="3_puijo"]
+[ext_resource type="FontFile" uid="uid://c0qtrsc5b7uhk" path="res://Assets/Menu/Fonts/XTypewriter-Regular.ttf" id="5_2xbiw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81hm7"]
+shader = ExtResource("2_dqfp7")
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6hxa3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_81hm7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_0olyr")
+theme_override_font_sizes/font_size = 100
+text = "Credits"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Button" parent="MarginContainer/HBoxContainer" instance=ExtResource("3_puijo")]
+layout_mode = 2
+text = "Menu"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 200
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 88
+
+[node name="Programmers" type="Label" parent="MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_2xbiw")
+theme_override_font_sizes/font_size = 72
+text = "Programmers
+Lunel
+M0G1WARA"
+
+[node name="Assets" type="Label" parent="MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_2xbiw")
+theme_override_font_sizes/font_size = 72
+text = "Assets
+AmadeusLight
+JoesAlotofthings
+Cainos
+
+"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 88
+
+[node name="Sound Effects" type="Label" parent="MarginContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_2xbiw")
+theme_override_font_sizes/font_size = 72
+text = "Sound Effects
+Dororochi"
+
+[node name="shaders" type="Label" parent="MarginContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_2xbiw")
+theme_override_font_sizes/font_size = 72
+text = "Shaders
+halcyonxero
+arlez80
+oscarcp
+rpics
+goldbon"
+
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

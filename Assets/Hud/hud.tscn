@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://bu3a6k6nqh77t"]
+
+[ext_resource type="Script" path="res://Assets/Hud/hud.gd" id="1_sdry0"]
+[ext_resource type="FontFile" uid="uid://c0qtrsc5b7uhk" path="res://Assets/Menu/Fonts/XTypewriter-Regular.ttf" id="2_iulv0"]
+[ext_resource type="FontFile" uid="uid://dnmekgv5hr61t" path="res://Assets/Menu/Fonts/Kaph-Regular.ttf" id="3_kr3x6"]
+[ext_resource type="PackedScene" uid="uid://c1aov5f8wuldy" path="res://Assets/Sfx/button/sound_button.tscn" id="4_nnad6"]
+[ext_resource type="PackedScene" uid="uid://cpy0cm3owct2w" path="res://Assets/Player/HealthBarPlayer/health_bar_player.tscn" id="5_snj43"]
+[ext_resource type="PackedScene" uid="uid://dy5fpccx3t7w2" path="res://Assets/Towers/TowerA/tower_a_panel.tscn" id="6_5fpl5"]
+[ext_resource type="PackedScene" uid="uid://b4xd3d2ycooy3" path="res://Assets/Towers/TowerB/tower_b_panel.tscn" id="7_xvsxc"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_sdry0")
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -735.0
+offset_bottom = 158.0
+grow_horizontal = 0
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_iulv0")
+theme_override_font_sizes/font_size = 100
+text = "Score"
+
+[node name="Score" type="Label" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_iulv0")
+theme_override_font_sizes/font_size = 100
+text = "0"
+
+[node name="GameOverContainer" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -382.5
+offset_top = -122.5
+offset_right = 382.5
+offset_bottom = 122.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_kr3x6")
+theme_override_font_sizes/font_size = 100
+text = "Game Over"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOverContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Restart" parent="GameOverContainer/HBoxContainer" instance=ExtResource("4_nnad6")]
+layout_mode = 2
+text = "Restart"
+
+[node name="Menu" parent="GameOverContainer/HBoxContainer" instance=ExtResource("4_nnad6")]
+layout_mode = 2
+text = "Menu"
+
+[node name="HealthBarPlayer" parent="." instance=ExtResource("5_snj43")]
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 541.0
+offset_top = 920.0
+offset_right = 1511.0
+offset_bottom = 1089.0
+
+[node name="FlowContainer" type="FlowContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 900.0
+offset_bottom = 170.0
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+
+[node name="TowerAPanel" parent="Panel/FlowContainer" instance=ExtResource("6_5fpl5")]
+layout_mode = 2
+
+[node name="TowerBPanel" parent="Panel/FlowContainer" instance=ExtResource("7_xvsxc")]
+layout_mode = 2
+
+[node name="TowerAPanel3" parent="Panel/FlowContainer" instance=ExtResource("6_5fpl5")]
+layout_mode = 2
+
+[connection signal="pressed" from="GameOverContainer/HBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverContainer/HBoxContainer/Menu" to="." method="_on_menu_pressed"]

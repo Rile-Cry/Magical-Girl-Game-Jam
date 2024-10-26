@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://btys2po33sgwd"]
+
+[ext_resource type="FontFile" uid="uid://c0qtrsc5b7uhk" path="res://Assets/Menu/Fonts/XTypewriter-Regular.ttf" id="1_yreql"]
+[ext_resource type="Script" path="res://Assets/Levels/rotate_button.gd" id="2_0bku6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avfoq"]
+bg_color = Color(0.6, 0.6, 1, 1)
+skew = Vector2(-1, 1)
+border_color = Color(0.313726, 0.352941, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j6ak"]
+bg_color = Color(0.6, 0.478431, 1, 1)
+skew = Vector2(-1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jarff"]
+bg_color = Color(0.6, 0.368627, 1, 1)
+skew = Vector2(-1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x6c4d"]
+
+[node name="RotateButton" type="Button"]
+custom_minimum_size = Vector2(110, 0)
+offset_right = 59.0
+offset_bottom = 115.0
+theme_override_fonts/font = ExtResource("1_yreql")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_avfoq")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7j6ak")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jarff")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_x6c4d")
+script = ExtResource("2_0bku6")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
